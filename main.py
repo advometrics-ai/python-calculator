@@ -1,15 +1,22 @@
-import customtkinter
+import customtkinter 
+from tkinter import END
 
+#Functionality code
+def click(number):
+    print(number)
+    entryField.insert(END,number)
+def clear():
+    entryField.delete(0,END)
 root=customtkinter.CTk()
 root.title('Modern Calculator')
-root.geometry('300x300')
+root.geometry('300x320')
 root.config(bg='black')
 
 
 entryField=customtkinter.CTkEntry(root,font=('arial',20,'bold'),text_color='white',fg_color='black',border_color='white', width=280,height=50,bg_color='black')
 entryField.grid(row=0,column=0,padx=10,pady=10,columnspan=4)
-b7=customtkinter.CTkButton(root, text='7',font=('arial',20,'bold'),width=60,bg_color='black', cursor='hand2')
-b7.grid(row=1,column=0)
+b7=customtkinter.CTkButton(root, text='7',font=('arial',20,'bold'),width=60,bg_color='black', cursor='hand2',command=lambda :click('7'))
+b7.grid(row=1,column=0,pady=10)
 b8=customtkinter.CTkButton(root, text='8',font=('arial',20,'bold'),width=60,bg_color='black', cursor='hand2')
 b8.grid(row=1,column=1)
 b9=customtkinter.CTkButton(root, text='9',font=('arial',20,'bold'),width=60,bg_color='black', cursor='hand2')
@@ -39,12 +46,13 @@ b0=customtkinter.CTkButton(root, text='0',font=('arial',20,'bold'),width=60,bg_c
 b0.grid(row=4,column=0, pady=10)
 bdot=customtkinter.CTkButton(root, text='.',font=('arial',20,'bold'),width=60,bg_color='black', cursor='hand2')
 bdot.grid(row=4,column=1)
-bclear=customtkinter.CTkButton(root, text='C',font=('arial',20,'bold'),width=60,bg_color='black', cursor='hand2',fg_color='red4')
+bclear=customtkinter.CTkButton(root, text='C',font=('arial',20,'bold'),
+                               width=60,bg_color='black', cursor='hand2',fg_color='red4',command=clear)
 bclear.grid(row=4,column=2)
 bdivision=customtkinter.CTkButton(root,text='/',font=('arial',20,'bold'),width=60,bg_color='black',cursor='hand2',fg_color='orange3')
 bdivision.grid(row=4,column=3)
 
 bequal=customtkinter.CTkButton(root,text='=',font=('arial',20,'bold'),width=280,bg_color='black',cursor='hand2',fg_color='dark green')
-bequal.grid(row=5,column=0,columnspan=4)
+bequal.grid(row=5,column=0,columnspan=4,pady=10)
 
 root.mainloop()
